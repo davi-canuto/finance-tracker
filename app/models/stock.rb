@@ -10,7 +10,10 @@
 #  updated_at :datetime         not null
 #
 class Stock < ApplicationRecord
+  has_many :user_stocks
+  has_many :users, through: :usre_stocks
 
+  validates :name, :ticker, presence: true
 
   def self.new_lookup ticker_symbol
     client = IEX::Api::Client.new(
@@ -27,6 +30,6 @@ class Stock < ApplicationRecord
     rescue => ex
       return nil
     end
-
   end
+
 end

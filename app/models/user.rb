@@ -10,6 +10,8 @@
 #  remember_created_at    :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  first_name             :string
+#  last_name              :string
 #
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -24,6 +26,11 @@ class User < ApplicationRecord
     stock = Stock.check_db ticker_symbol
     return false unless stock
     stocks.where(id: stock.id).exists?
+  end
+
+  def full_name
+    return "#{first_name} #{last_name}" if first_name || last_name
+    "Anonymous"
   end
 
   def under_stock_limit?

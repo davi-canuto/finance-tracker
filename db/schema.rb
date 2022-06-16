@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2022_06_15_200608) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "stocks", force: :cascade do |t|
     t.string "ticker"
     t.string "name"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 2022_06_15_200608) do
   end
 
   create_table "user_stocks", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "stock_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "stock_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["stock_id"], name: "index_user_stocks_on_stock_id"

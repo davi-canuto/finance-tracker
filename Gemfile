@@ -28,6 +28,8 @@ gem 'iex-ruby-client'
 
 gem "font-awesome-rails"
 
+gem 'pg'
+
 
 group :development do
   # Use sqlite3 as the database for Active Record
@@ -36,10 +38,6 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
-end
-
-group :production do
-  gem 'pg'
 end
 
 group :test do
